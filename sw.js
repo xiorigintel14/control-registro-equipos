@@ -1,4 +1,4 @@
-const CACHE = "control-registro-equipos-v1";
+const CACHE = "control-registro-equipos-v2";
 const APP_FILES = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png"];
 
 self.addEventListener("install", (event) => {
