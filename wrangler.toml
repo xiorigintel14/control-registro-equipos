@@ -1,6 +1,0 @@
-name = "control-registro-equipos-api"
-main = "worker.js"
-compatibility_date = "2026-09-02"
-
-[vars]
-ALLOWED_ORIGIN = "https://xiorigintel14.github.io"
