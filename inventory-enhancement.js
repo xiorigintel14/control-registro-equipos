@@ -56,15 +56,43 @@
   }
 
   function showInventory(tabList, tab) {
-    inventoryActive = true;
-    tabList.querySelectorAll('[role="tab"]').forEach((item) => item.setAttribute("aria-selected", item === tab ? "true" : "false"));
-    tabList.parentElement?.querySelectorAll(':scope > [role="tabpanel"]').forEach((panel) => {
-      if (panel.id !== PANEL_ID) panel.style.display = "none";
+  inventoryActive = true;
+
+  const tabsContainer =
+    tabList.closest('[data-slot="tabs"]') ||
+    tabList.parentElement;
+
+  tabList
+    .querySelectorAll('[role="tab"]')
+    .forEach((item) => {
+      item.setAttribute(
+        "aria-selected",
+        item === tab ? "true" : "false"
+      );
     });
-    const panel = document.getElementById(PANEL_ID);
-    if (panel) panel.style.display = "block";
-    void loadInventory();
+
+  /*
+   * Oculta Registrar, Prefijos y Verificar,
+   * aunque no sean hijos directos.
+   */
+  tabsContainer
+    ?.querySelectorAll('[role="tabpanel"]')
+    .forEach((panel) => {
+      panel.style.display =
+        panel.id === PANEL_ID
+          ? "block"
+          : "none";
+    });
+
+  const panel =
+    document.getElementById(PANEL_ID);
+
+  if (panel) {
+    panel.style.display = "block";
   }
+
+  void loadInventory();
+}
 
   function restoreOriginalPanels(tabList, tab) {
     inventoryActive = false;
