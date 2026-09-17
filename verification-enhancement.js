@@ -220,6 +220,16 @@
   }
 
   function restorePanels(tabList, tab) {
+    if (tab?.id === "inventory-tab") {
+  active = false;
+  stopCamera();
+
+  document
+    .getElementById(PANEL_ID)
+    ?.style.setProperty("display", "none");
+
+  return;
+}
     active = false;
     stopCamera();
     document.getElementById(PANEL_ID)?.style.setProperty("display", "none");
