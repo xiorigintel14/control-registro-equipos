@@ -1,5 +1,5 @@
-const CACHE = "control-registro-equipos-v3";
-const APP_FILES = ["./", "./index.html", "./inventory-enhancement.js", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png"];
+const CACHE = "control-registro-equipos-v4";
+const APP_FILES = ["./", "./index.html", "./inventory-enhancement.js", "./verification-enhancement.js", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(APP_FILES)));
