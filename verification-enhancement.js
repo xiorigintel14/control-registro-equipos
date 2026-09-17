@@ -168,7 +168,10 @@
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action: "start", name })
       });
-      saveSession({ id: result.sessionId, name });
+     saveSession({
+  id: result.sessionId || result.jornadaId,
+  name: name
+});
       message(`Jornada iniciada con ${result.total} equipos en Stock.`, "ok");
       await loadCurrent();
     } catch (error) { message(error.message, "error"); }
